@@ -1,0 +1,71 @@
+{
+    "menu": [
+        {
+            "url": "/company",
+            "name": "Dashboard",
+            "slug": "dashboard",
+            "icon": "fa fa-tachometer"
+        },
+        {
+            "url": "/company/lead",
+            "name": "Lead",
+            "slug": "lead",
+            "icon": "fa fa-magnet"
+        },
+        {
+            "url": "/company/properties",
+            "name": "Property",
+            "slug": "property",
+            "icon": "fa fa-building-o"
+        },
+        {
+            "url": "#",
+            "name": "Property Management",
+            "slug": "property-management",
+            "icon": "feather icon-home"
+        },
+        {
+            "url": "/company/contacts",
+            "name": "Contacts",
+            "slug": "contacts",
+            "icon": "feather icon-user"
+        },
+        {
+            "url": "#",
+            "name": "Calendar",
+            "slug": "calendar",
+            "icon": "feather icon-calendar"
+        },
+        {
+            "url": "#",
+            "name": "Transaction Report",
+            "slug": "transaction_report",
+            "icon": "feather icon-calendar"
+        },
+        {
+            "url": "#",
+            "name": "Recruitment",
+            "slug": "recruitment",
+            "icon": "feather icon-user"
+        },
+        {
+            "url": "#",
+            "name": "Accounts",
+            "slug": "accounts",
+            "icon": "feather icon-user"
+        },
+        {
+            "url": "#",
+            "name": "Report",
+            "slug": "report",
+            "icon": "fa fa-line-chart"
+        },
+        {
+            "url": "#",
+            "name": "Profile",
+            "slug": "profile",
+            "icon": "feather icon-user"
+        }
+
+    ]
+}

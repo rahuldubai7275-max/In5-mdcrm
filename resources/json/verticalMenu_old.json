@@ -1,0 +1,327 @@
+{
+    "menu": [
+        {
+            "url": "/admin",
+            "name": "Dashboard",
+            "slug": "dashboard",
+            "icon": "fa fa-tachometer"
+        },
+        {
+            "url": "/admin/leads",
+            "name": "Leads",
+            "slug": "leads",
+            "icon": "fa fa-magnet"
+        },
+        {
+            "url": "/admin/off-plan-projects",
+            "name": "Developer Projects",
+            "slug": "developer-projects",
+            "icon": "fa fa-building-o"
+        },
+        {
+            "url": "/admin/properties",
+            "name": "Properties",
+            "slug": "property",
+            "icon": "fa fa-building-o"
+        },
+        {
+            "url": "/admin/contacts",
+            "name": "Contacts",
+            "slug": "contacts",
+            "icon": "feather icon-user"
+        },
+        {
+            "url": "/admin/deals",
+            "name": "Deals",
+            "slug": "deals",
+            "icon": "fa fa-handshake-o"
+        },
+        {
+            "url": "/admin/calendar",
+            "name": "Calendar",
+            "slug": "calendar",
+            "icon": "feather icon-calendar"
+        },{
+            "url": "#",
+            "name": "Report",
+            "slug": "report",
+            "icon": "fa fa-line-chart",
+            "submenu": [
+                {
+                    "url": "/admin/activity-report",
+                    "name": "Activities Report",
+                    "icon": "feather icon-circle"
+                },{
+                    "url": "/admin/report",
+                    "name": "In a Glance",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/report-best",
+                    "name": "Performance",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/dc-report",
+                    "name": "DC Report",
+                    "icon": "feather icon-circle"
+                }
+            ]
+        },{
+            "url": "#",
+            "name": "Survey",
+            "slug": "report",
+            "icon": "fa fa-file-text",
+            "submenu": [
+                {
+                    "url": "/admin/survey-question",
+                    "name": "Create Survey",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/surveys",
+                    "name": "Survey Report",
+                    "icon": "feather icon-circle"
+                }
+            ]
+        },
+        {
+            "url": "/admin/surveys",
+            "name": "Survey Report",
+            "slug": "Survey Report",
+            "icon": "fa fa-file-text"
+        },{
+            "url": "#",
+            "name": "Task",
+            "slug": "task",
+            "icon": "fa fa-file-text",
+            "submenu": [
+                {
+                    "url": "/admin/task-title",
+                    "name": "Create Task",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/tasks",
+                    "name": "Task Management",
+                    "icon": "feather icon-circle"
+                }
+            ]
+        },
+        {
+            "url": "/admin/tasks",
+            "name": "Task Management",
+            "slug": "all-tasks",
+            "icon": "fa fa-file-text"
+        },
+        {
+            "url": "#",
+            "name": "HR",
+            "slug": "hr",
+            "icon": "feather icon-user",
+            "submenu": [
+                {
+                    "url": "/admin/admins",
+                    "name": "Users",
+                    "icon": "feather icon-circle"
+                },{
+                    "url": "/admin/recruitment",
+                    "name": "Recruitment",
+                    "icon": "feather icon-circle"
+                },{
+                    "url": "/admin/warnings",
+                    "name": "Warning Letters",
+                    "icon": "feather icon-circle"
+                },{
+                    "url": "/admin/hr-request",
+                    "name": "HR Requests",
+                    "icon": "feather icon-circle"
+                },{
+                    "url": "/admin/job-title",
+                    "name": "Job Title",
+                    "icon": "feather icon-circle"
+                },{
+                    "url": "/admin/language",
+                    "name": "Language",
+                    "icon": "feather icon-circle"
+                }
+            ]
+        },
+        {
+            "url": "/admin/target/1",
+            "name": "Targets",
+            "slug": "targets",
+            "icon": "feather icon-target"
+        },
+        {
+            "url": "#",
+            "name": "Admin",
+            "slug": "Super-Admin",
+            "icon": "feather icon-user",
+            "submenu": [
+                {
+                    "url": "/admin/contact-source",
+                    "name": "Source",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/vendor-motivation",
+                    "name": "Vendor Motivation",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/emirates",
+                    "name": "Emirates",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/master-project",
+                    "name": "Master Project",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/community",
+                    "name": "Project",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/type",
+                    "name": "Type",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/cluster-street",
+                    "name": "Cluster / Street / Frond",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/views",
+                    "name": "Views",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/bedrooms",
+                    "name": "Bedrooms",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/bathrooms",
+                    "name": "Bathrooms",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/vaastu-orientation",
+                    "name": "Vaastu Orientation",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/developers",
+                    "name": "Developers",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/deal-tracking-default",
+                    "name": "Deal Tracking",
+                    "icon": "feather icon-circle"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "Requests",
+            "slug": "Super-Admin",
+            "icon": "feather icon-message-square",
+            "classlist": "requests-menu",
+            "submenu": [
+                {
+                    "url": "/admin/requests",
+                    "name": "Leave Requests",
+                    "slug": "requests",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/requests-hr",
+                    "name": "Other Requests",
+                    "slug": "requests",
+                    "icon": "feather icon-circle"
+                }
+            ]
+        },
+
+        {
+            "url": "/admin/settings",
+            "name": "Control Panel",
+            "slug": "control-panel",
+            "icon": "feather icon-settings"
+        },
+        {
+            "url": "/admin/data-center-arranged",
+            "name": "Data Center",
+            "slug": "data-center-agent",
+            "icon": "feather icon-user"
+        },
+        {
+            "url": "#",
+            "name": "Data Center",
+            "slug": "data-center",
+            "icon": "feather icon-user",
+            "submenu": [
+                {
+                    "url": "/admin/data-center",
+                    "name": "Data",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/data-center-access",
+                    "name": "Access",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/data-center-assign",
+                    "name": "Allocation",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/data-center-file",
+                    "name": "Files",
+                    "icon": "feather icon-circle"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "Company",
+            "slug": "Company",
+            "icon": "feather icon-user",
+            "submenu": [
+                {
+                    "url": "/admin/business-timings",
+                    "name": "Business Timing",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/company-documents",
+                    "name": "Company Documents",
+                    "icon": "feather icon-circle"
+                },
+                {
+                    "url": "/admin/company-profile",
+                    "name": "Company Profile",
+                    "icon": "feather icon-circle"
+                }
+            ]
+        },{
+            "url": "/admin/agent-forms",
+            "name": "Agent Forms",
+            "slug": "agent-forms",
+            "icon": "fa fa-files-o"
+        },{
+            "url": "https://mdcrms.com/admin/login",
+            "name": "User Guide",
+            "slug": "user-guide",
+            "icon": "fa fa-files-o",
+            "target": "_blank"
+        }
+
+    ]
+}
