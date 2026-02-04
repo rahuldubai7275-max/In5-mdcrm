@@ -72,7 +72,7 @@
             $agent_count=App\Models\Contact::where('company_id', $adminAuth->company_id)->where('contact_category', 'agent')->count();
             $owner_count=App\Models\Contact::where('company_id', $adminAuth->company_id)->where('contact_category', 'owner')->count();
             $developer_count=App\Models\Contact::where('company_id', $adminAuth->company_id)->where('contact_category', 'developer')->count();
-            
+
             $listed_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('status', '1')->count();
             $unlisted_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('status', '2')->count();
             $request_listed_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('status', '11')->count();
@@ -796,15 +796,15 @@
                     <h4 class="card-title">Contact Categories</h4>
                 </div>
                 <style>
-                .height-320 {
-                      height: 320px;
+                    .height-320 {
+                        height: 320px;
                     }
                 </style>
                 <div class="card-content">
                     <div class="card-body pl-0">
                         <div class="height-320">
-                          <canvas id="contact-cat-chart"></canvas>
-                        </div>  
+                            <canvas id="contact-cat-chart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1070,7 +1070,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
- var contactCatCharctx = document.getElementById('contact-cat-chart').getContext('2d');
+var contactCatCharctx = document.getElementById('contact-cat-chart').getContext('2d');
 
 var contactCatCharOptions = {
   responsive: true,
