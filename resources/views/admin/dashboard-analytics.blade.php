@@ -707,16 +707,19 @@
             </div>
             @endif
         @endif
-        <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem;">
+
+        <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem">
             <div class="card h-100">
-                <div class="card-header d-flex justify-content-between pb-0">
+                <div class="card-header pb-1">
                     <h4 class="card-title">Property Listing</h4>
                 </div>
-                <div class="card-content">
-                    <div class="card-body pt-0 pb-5">
+                <div class="card-content d-flex flex-column h-100">
+                    <div class="card-body d-flex flex-column p-0 flex-grow-1">
                         <div id="customer-chart"></div>
                     </div>
-                    <ul class="list-group list-group-flush customer-info" style="position: absolute;width: 100%;bottom: 12px;">
+                </div>
+                <div class="card-footer p-0" style="border: 0px;">
+                    <ul class="list-group list-group-flush customer-info">
                         <li class="list-group-item d-flex justify-content-between ">
                             <div class="series-info">
                                 <i class="fa fa-circle font-small-3 text-primary"></i>
@@ -743,14 +746,16 @@
         @if($adminAuth->type!=2)
         <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem">
             <div class="card h-100">
-                <div class="card-header d-flex justify-content-between pb-0">
+                <div class="card-header pb-1">
                     <h4 class="card-title">Residential/Commercial</h4>
                 </div>
-                <div class="card-content">
-                    <div class="card-body py-0">
+                <div class="card-content d-flex flex-column h-100">
+                    <div class="card-body d-flex flex-column p-0 flex-grow-1">
                         <div id="property-type-chart"></div>
                         <div id="session-chart"></div>
                     </div>
+                </div>
+                <div class="card-footer p-0" style="border: 0px;">
                     <ul class="list-group list-group-flush customer-info">
                         <li class="list-group-item d-flex justify-content-between ">
                             <div class="series-info">
@@ -776,16 +781,39 @@
         </div>
         @endif
 
-
-        <div class="col-md-4 order-12" style="padding-bottom: 2.2rem;">
-            <div class="card h-100">
-                <div class="card-header">
+        <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem;">
+            <div class="card h-100 d-flex flex-column">
+                <div class="card-header pb-1">
                     <h4 class="card-title">Leads</h4>
                 </div>
-                <div class="card-content">
-                    <div class="card-body pl-0">
-                        <div id="lead-status-chart" class="height-300"></div>
+                <div class="card-content d-flex flex-column h-100" style="height: 100%;">
+                    <div class="card-body d-flex flex-column p-0 flex-grow-1" style="height: 100%;">
+                        <div id="lead-status-chart" class="height-300" style="height: 100%;"></div>
                     </div>
+                </div>
+                <div class="card-footer p-0" style="border: 0px;">
+                    <ul class="list-group list-group-flush customer-info">
+                        <li class="list-group-item d-flex justify-content-between ">
+                            <div class="series-info" style="width: 50%;">
+                                <i class="fa fa-circle font-small-3" style="color: #4ea397 !important;"></i>
+                                <span class="text-bold-600">Open</span>
+                            </div>
+                            <div class="product-result" style="width: 50%;">
+                                <i class="fa fa-circle font-small-3" style="color: #22c3aa !important;"></i>
+                                <span class="text-bold-600">Closed</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between ">
+                            <div class="series-info" style="width: 50%;">
+                                <i class="fa fa-circle font-small-3" style="color: #7bd9a5 !important;"></i>
+                                <span class="text-bold-600">Add to contant</span>
+                            </div>
+                            <div class="product-result" style="width: 50%;">
+                                <i class="fa fa-circle font-small-3" style="color: #a8e7d2 !important;"></i>
+                                <span class="text-bold-600">Deleted</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -810,16 +838,18 @@
             </div>
         </div>
             @if($adminAuth->type==2)
-                <div class="col-lg-4 col-12 order-12">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between pb-0">
+                <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem">
+                    <div class="card h-100">
+                        <div class="card-header pb-1">
                             <h4 class="card-title">Residential/Commercial</h4>
                         </div>
-                        <div class="card-content">
-                            <div class="card-body py-0">
+                        <div class="card-content d-flex flex-column h-100">
+                            <div class="card-body d-flex flex-column p-0 flex-grow-1">
                                 <div id="property-type-chart"></div>
                                 <div id="session-chart"></div>
                             </div>
+                        </div>
+                        <div class="card-footer p-0" style="border: 0px;">
                             <ul class="list-group list-group-flush customer-info">
                                 <li class="list-group-item d-flex justify-content-between ">
                                     <div class="series-info">
@@ -1131,56 +1161,60 @@ new Chart(contactCatCharctx, {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-  var $dark_green = '#4ea397';
-  var $green = '#22c3aa';
-  var $light_green = '#7bd9a5';
-  var $lighten_green = '#a8e7d2';
-  var barChart = echarts.init(document.getElementById('lead-status-chart'));
+var $dark_green = '#4ea397';
+var $green = '#22c3aa';
+var $light_green = '#7bd9a5';
+var $lighten_green = '#a8e7d2';
+var barChart = echarts.init(document.getElementById('lead-status-chart'));
 
-  // var i;
-  function randomize() {
-      return Math.round(300 + Math.random() * 700) / 10
-  };
+function randomize() {
+    return Math.round(300 + Math.random() * 700) / 10
+};
 
-  var barChartoption = {
-      legend: {},
-      tooltip: {},
-      dataset: {
-          source: [
-              ['product', 'Open', 'Closed', 'Add to contact' @if($adminAuth->type==1) ,'Deleted' @endif],
-              ['Leads', {{$open_lead_count}}, {{$close_count}}, {{$add_to_contact_count}} @if($adminAuth->type==1) ,{{$delete_count}} @endif],
-          ],
-      },
-
-
-      xAxis: {
-          type: 'category',
-          splitLine: { show: true },
-      },
-      yAxis: {},
-      // Declare several bar series, each will be mapped
-      // to a column of dataset.source by default.
-      series: [
-          {
-              type: 'bar',
-              itemStyle: {color: $dark_green},
-          },
-          {
-              type: 'bar',
-              itemStyle: {color: $green},
-          },
-          {
-              type: 'bar',
-              itemStyle: {color: $light_green},
-          },
-          {
-              type: 'bar',
-              itemStyle: {color: $lighten_green},
-          }
-      ]
-  };
-  barChart.setOption(barChartoption);
-
+var barChartoption = {
+    tooltip: {},
+    grid: {
+        top: '5%',
+        bottom: '15%',
+        left: '5%',
+        right: '5%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        data: ['Leads', 'Closed', 'Added' @if($adminAuth->type==1) ,'Deleted' @endif]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            type: 'bar',
+            data: [
+                {
+                    value: {{$open_lead_count}},
+                    itemStyle: {color: $dark_green}
+                },
+                {
+                    value: {{$close_count}},
+                    itemStyle: {color: $green}
+                },
+                {
+                    value: {{$add_to_contact_count}},
+                    itemStyle: {color: $light_green}
+                }
+                @if($adminAuth->type==1)
+                ,
+                {
+                    value: {{$delete_count}},
+                    itemStyle: {color: $lighten_green}
+                }
+                @endif
+            ]
+        }
+    ]
+};
+barChart.setOption(barChartoption);
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   var revenueChartoptions = {

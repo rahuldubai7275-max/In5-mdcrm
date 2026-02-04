@@ -5,7 +5,7 @@
     if($task_access_setting)
         $task_access_admin=\App\Models\SettingAdmin::where('setting_id',$task_access_setting->id)->where('admin_id',$adminAuth->id)->first();
 @endphp
-<div class="col-md-4 col-12 order-1 order-sm-12" style="padding-bottom: 2.2rem;">
+<div class="col-12 @if($adminAuth->type==2) col-lg-4 order-12 @else col-md-4 order-1 order-sm-12 @endif" style="padding-bottom: 2.2rem;">
     <div class="card h-100 mb-0">
         <div class="card-header">
             <h4 class="card-title">Daily Tasks</h4>
