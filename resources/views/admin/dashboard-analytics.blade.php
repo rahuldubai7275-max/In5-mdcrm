@@ -71,7 +71,8 @@
             $tenant_count=App\Models\Contact::where('company_id', $adminAuth->company_id)->where('contact_category', 'tenant')->count();
             $agent_count=App\Models\Contact::where('company_id', $adminAuth->company_id)->where('contact_category', 'agent')->count();
             $owner_count=App\Models\Contact::where('company_id', $adminAuth->company_id)->where('contact_category', 'owner')->count();
-
+            $developer_count=App\Models\Contact::where('company_id', $adminAuth->company_id)->where('contact_category', 'developer')->count();
+            
             $listed_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('status', '1')->count();
             $unlisted_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('status', '2')->count();
             $request_listed_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('status', '11')->count();
@@ -118,6 +119,10 @@
                                           ->orWhere('client_manager_tow', '=', $admin_id);
                                 })->count();
             $owner_count=App\Models\Contact::where('contact_category', 'owner')->where(function($query) use ($admin_id){
+                                    $query->where('client_manager', '=', $admin_id)
+                                          ->orWhere('client_manager_tow', '=', $admin_id);
+                                })->count();
+            $developer_count=App\Models\Contact::where('contact_category', 'developer')->where(function($query) use ($admin_id){
                                     $query->where('client_manager', '=', $admin_id)
                                           ->orWhere('client_manager_tow', '=', $admin_id);
                                 })->count();
@@ -790,11 +795,16 @@
                 <div class="card-header">
                     <h4 class="card-title">Contact Categories</h4>
                 </div>
+                <style>
+                .height-320 {
+                      height: 320px;
+                    }
+                </style>
                 <div class="card-content">
                     <div class="card-body pl-0">
-                        <div class="height-300">
-                            <canvas id="contact-cat-chart"></canvas>
-                        </div>
+                        <div class="height-320">
+                          <canvas id="contact-cat-chart"></canvas>
+                        </div>  
                     </div>
                 </div>
             </div>
@@ -1060,74 +1070,64 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  var contactCatCharctx = $("#contact-cat-chart");
+ var contactCatCharctx = document.getElementById('contact-cat-chart').getContext('2d');
 
-  // Chart Options
-  var contactCatCharOptions = {
-    // Elements options apply to all of the options unless overridden in a dataset
-    // In this case, we are setting the border of each bar to be 2px wide
-    elements: {
-      rectangle: {
-        borderWidth: 2,
-        borderSkipped: 'left'
+var contactCatCharOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  responsiveAnimationDuration: 500,
+  legend: { display: false },
+
+  scales: {
+    xAxes: [{
+      gridLines: {
+        color: grid_line_color
+      },
+      ticks: {
+        beginAtZero: true,
+        precision: 0
       }
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    responsiveAnimationDuration: 500,
-    legend: { display: false },
-    scales: {
-      xAxes: [{
-        display: true,
-        gridLines: {
-          color: grid_line_color,
-        },
-        scaleLabel: {
-          display: true,
-        }
-      }],
-      yAxes: [{
-        display: true,
-        gridLines: {
-          color: grid_line_color,
-        },
-        scaleLabel: {
-          display: true,
-        },
-        ticks: {
-          stepSize: 1000
-        },
-      }],
-    },
-    title: {
-      display: true,
-      text: ''
-    },
-
-  };
-
-  // Chart Data
-  var contactCatCharData = {
-    labels: ["Buyer", "Tenant", "Agent", "Owner"],
-    datasets: [{
-      label: "",
-      data: [{{$buyer_count}}, {{$tenant_count}}, {{$agent_count}}, {{$owner_count}}],
-      backgroundColor: ['#1976D2','#1E88E5','#2196F3','#42A5F5'],
-      borderColor: "transparent"
+    }],
+    yAxes: [{
+      gridLines: {
+        color: grid_line_color
+      },
+      ticks: {
+        beginAtZero: true
+      }
     }]
-  };
+  }
+};
 
-  var contactCatCharconfig = {
-    type: 'horizontalBar',
+var contactCatCharData = {
+  labels: ["Buyer", "Tenant", "Agent", "Owner", "Developer"],
+  datasets: [{
+    data: [
+      {{$buyer_count}},
+      {{$tenant_count}},
+      {{$agent_count}},
+      {{$owner_count}},
+      {{$developer_count}}
+    ],
+    backgroundColor: [
+      '#1976D2',
+      '#1E88E5',
+      '#2196F3',
+      '#42A5F5',
+      '#93c9f5'
+    ],
+    borderWidth: 0,
+    barThickness: 18,
+    maxBarThickness: 22
+  }]
+};
 
-    // Chart Options
-    options: contactCatCharOptions,
+new Chart(contactCatCharctx, {
+  type: 'horizontalBar',
+  data: contactCatCharData,
+  options: contactCatCharOptions
+});
 
-    data: contactCatCharData
-  };
-
-  // Create the chart
-  var contactCatChar = new Chart(contactCatCharctx, contactCatCharconfig);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
