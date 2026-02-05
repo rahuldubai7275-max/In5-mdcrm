@@ -82,7 +82,6 @@
             $Bayut_count = $Bayut_clone->where('portal_property.portal_id', 2)->count('property.id');
             $Dubizzle_count = $Dubizzle_clone->where('portal_property.portal_id', 3)->count('property.id');
             $Own_Website_count = $Own_Website_clone->where('portal_property.portal_id', 4)->count('property.id');
-            //dd($total_portal_count,$Property_Finder_count,$Bayut_count,$Dubizzle_count,$Own_Website_count);
 
             $sale_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('listing_type_id', 1)->count();
             $rent_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('listing_type_id', 2)->count();
@@ -117,7 +116,6 @@
             $Bayut_count = $Bayut_clone->where('portal_property.portal_id', 2)->where($adminCondition)->count('property.id');
             $Dubizzle_count = $Dubizzle_clone->where('portal_property.portal_id', 3)->where($adminCondition)->count('property.id');
             $Own_Website_count = $Own_Website_clone->where('portal_property.portal_id', 4)->where($adminCondition)->count('property.id');
-            //dd($total_portal_count,$Property_Finder_count,$Bayut_count,$Dubizzle_count,$Own_Website_count);
 
             $sale_count=App\Models\Property::where('listing_type_id', 1)->where(function($query) use ($admin_id){
                                     $query->where('client_manager_id', '=', $admin_id)
