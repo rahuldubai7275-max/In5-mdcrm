@@ -722,6 +722,26 @@
                 }
             });
         }
+        $(document).ready(function() {
+            $('#master_project').select2({
+                placeholder: "Select Mater Project",
+                allowClear: true,
+                width: '100%', // Add this line
+                language: {
+                    noResults: function() {
+                        return "Select Emirate First";
+                    }
+                }
+            }).on('select2:open', function() {
+                // Check if no results message exists and add class
+                setTimeout(function() {
+                    var $noResults = $('.select2-results__message');
+                    if($noResults.length > 0) {
+                        $noResults.addClass('no-data-found');
+                    }
+                }, 100);
+            });
+        });
     </script>
 
 @endsection

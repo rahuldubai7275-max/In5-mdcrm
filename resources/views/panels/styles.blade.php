@@ -129,6 +129,9 @@ $configData = Helper::applClasses();
             @keyframes blinker {
                 50% { opacity: 0; }
             }
+            .select2-results__message.no-data-found{
+                color: red;
+            }
 
             {{--.main-menu {
                 height: 96% !important;
