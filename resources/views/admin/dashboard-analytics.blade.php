@@ -742,8 +742,7 @@
                 </div>
             </div>
         </div>
-
-        @if($adminAuth->type!=2)
+        
         <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem">
             <div class="card h-100">
                 <div class="card-header pb-1">
@@ -779,8 +778,8 @@
                 </div>
             </div>
         </div>
-        @endif
 
+        @if($adminAuth->type!=2)
         <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem;">
             <div class="card h-100 d-flex flex-column">
                 <div class="card-header pb-1">
@@ -817,6 +816,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
         <div class="col-md-12 order-12" style="padding-bottom: 2.2rem">
             <div class="card h-100">
@@ -837,57 +837,59 @@
                 </div>
             </div>
         </div>
-            @if($adminAuth->type==2)
-                <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem">
-                    <div class="card h-100">
-                        <div class="card-header pb-1">
-                            <h4 class="card-title">Residential/Commercial</h4>
-                        </div>
-                        <div class="card-content d-flex flex-column h-100">
-                            <div class="card-body d-flex flex-column p-0 flex-grow-1">
-                                <div id="property-type-chart"></div>
-                                <div id="session-chart"></div>
-                            </div>
-                        </div>
-                        <div class="card-footer p-0" style="border: 0px;">
-                            <ul class="list-group list-group-flush customer-info">
-                                <li class="list-group-item d-flex justify-content-between ">
-                                    <div class="series-info">
-                                        <i class="fa fa-circle font-small-3 text-primary"></i>
-                                        <span class="text-bold-600">Residential</span>
-                                    </div>
-                                    <div class="product-result">
-                                        <span>{{$residential_count}}</span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between ">
-                                    <div class="series-info">
-                                        <i class="fa fa-circle font-small-3 text-warning"></i>
-                                        <span class="text-bold-600">Commercial</span>
-                                    </div>
-                                    <div class="product-result">
-                                        <span>{{$commercial_count}}</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endif
-        <div class="col-md-12 d-none d-sm-block  order-12">
-            <div class="card">
-                <div class="card-header">
+        
+        <div class="@if($adminAuth->type==2) col-lg-8 col-12 @else col-md-12 @endif d-none d-sm-block  order-12" style="padding-bottom: 2.2rem;">
+            <div class="card h-100 d-flex flex-column">
+                <div class="card-header pb-1">
                     <h4 class="card-title">Added properties and contacts</h4>
                 </div>
-                <div class="card-content">
-                    <div class="card-body pl-0">
-                        <div class="height-300">
-                            <div id="revenue-chart"></div>
-                        </div>
+                <div class="card-content d-flex flex-column h-100">
+                    <div class="card-body d-flex flex-column p-0 flex-grow-1 h-100">
+                        <div id="revenue-chart" class="height-250" style="height: 100%;"></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        @if($adminAuth->type==2)
+        <div class="col-lg-4 col-12 order-12" style="padding-bottom: 2.2rem;">
+            <div class="card h-100 d-flex flex-column">
+                <div class="card-header pb-1">
+                    <h4 class="card-title">Leads</h4>
+                </div>
+                <div class="card-content d-flex flex-column h-100">
+                    <div class="card-body d-flex flex-column p-0 flex-grow-1 h-100">
+                        <div id="lead-status-chart" class="height-250" style="height: 100%;"></div>
+                    </div>
+                </div>
+                <div class="card-footer p-0" style="border: 0px;">
+                    <ul class="list-group list-group-flush customer-info">
+                        <li class="list-group-item d-flex justify-content-between ">
+                            <div class="series-info" style="width: 50%;">
+                                <i class="fa fa-circle font-small-3" style="color: #4ea397 !important;"></i>
+                                <span class="text-bold-600">Open</span>
+                            </div>
+                            <div class="product-result" style="width: 50%;">
+                                <i class="fa fa-circle font-small-3" style="color: #22c3aa !important;"></i>
+                                <span class="text-bold-600">Closed</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between ">
+                            <div class="series-info" style="width: 50%;">
+                                <i class="fa fa-circle font-small-3" style="color: #7bd9a5 !important;"></i>
+                                <span class="text-bold-600">Add to contant</span>
+                            </div>
+                            <div class="product-result" style="width: 50%;">
+                                <i class="fa fa-circle font-small-3" style="color: #a8e7d2 !important;"></i>
+                                <span class="text-bold-600">Deleted</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endif
+
     </div>
 
     <!-- Modal -->
