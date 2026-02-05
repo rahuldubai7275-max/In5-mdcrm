@@ -59,8 +59,31 @@
     @if($adminAuth->type!=6 && $adminAuth->type!=8)
     @php
 
+        $portal_count = App\Models\Property::join('portal_property', 'property.id', '=', 'portal_property.property_id')
+            ->where('property.company_id', $adminAuth->company_id)
+            ->distinct('property.id');
+
+        // Create a reusable closure for admin condition
+        $adminCondition = function($query) use ($adminAuth) {
+            $query->where('client_manager_id', '=', $adminAuth->id)
+                ->orWhere('client_manager2_id', '=', $adminAuth->id);
+        };
+
+        // Clone queries
+        $total_portal_clone = clone $portal_count;
+        $Property_Finder_clone = clone $portal_count;
+        $Bayut_clone = clone $portal_count;
+        $Dubizzle_clone = clone $portal_count;
+        $Own_Website_clone = clone $portal_count;
 
         if($adminAuth->type<3){
+            $total_portal_count = $Property_Finder_clone->count('property.id');
+            $Property_Finder_count = $Property_Finder_clone->where('portal_property.portal_id', 1)->count('property.id');
+            $Bayut_count = $Bayut_clone->where('portal_property.portal_id', 2)->count('property.id');
+            $Dubizzle_count = $Dubizzle_clone->where('portal_property.portal_id', 3)->count('property.id');
+            $Own_Website_count = $Own_Website_clone->where('portal_property.portal_id', 4)->count('property.id');
+            //dd($total_portal_count,$Property_Finder_count,$Bayut_count,$Dubizzle_count,$Own_Website_count);
+
             $sale_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('listing_type_id', 1)->count();
             $rent_count=App\Models\Property::where('company_id', $adminAuth->company_id)->where('listing_type_id', 2)->count();
 
@@ -88,6 +111,14 @@
             $open_lead_count=App\Models\Lead::where('company_id', $adminAuth->company_id)->where('status', '0')->count();
         }else{
             $admin_id=$adminAuth->id;
+
+            $total_portal_count = $total_portal_clone->where($adminCondition)->count('property.id');
+            $Property_Finder_count = $Property_Finder_clone->where('portal_property.portal_id', 1)->where($adminCondition)->count('property.id');
+            $Bayut_count = $Bayut_clone->where('portal_property.portal_id', 2)->where($adminCondition)->count('property.id');
+            $Dubizzle_count = $Dubizzle_clone->where('portal_property.portal_id', 3)->where($adminCondition)->count('property.id');
+            $Own_Website_count = $Own_Website_clone->where('portal_property.portal_id', 4)->where($adminCondition)->count('property.id');
+            //dd($total_portal_count,$Property_Finder_count,$Bayut_count,$Dubizzle_count,$Own_Website_count);
+
             $sale_count=App\Models\Property::where('listing_type_id', 1)->where(function($query) use ($admin_id){
                                     $query->where('client_manager_id', '=', $admin_id)
                                           ->orWhere('client_manager2_id', '=', $admin_id);
@@ -888,7 +919,22 @@
                 </div>
             </div>
         </div>
-    @endif
+        @endif
+
+        <div class="col-md-12 order-12" style="padding-bottom: 2.2rem">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4 class="card-title">Properties at Portals</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body pl-0">
+                        <div class="height-250">
+                            <canvas id="portal-property-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -1099,6 +1145,65 @@
   );
 
   sessionChart.render();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var contactCatCharctx = document.getElementById('portal-property-chart').getContext('2d');
+
+var contactCatCharOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  responsiveAnimationDuration: 500,
+  legend: { display: false },
+
+  scales: {
+    xAxes: [{
+      gridLines: {
+        color: grid_line_color
+      },
+      ticks: {
+        beginAtZero: true,
+        precision: 0
+      }
+    }],
+    yAxes: [{
+      gridLines: {
+        color: grid_line_color
+      },
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+};
+
+var contactCatCharData = {
+  labels: ["Property Finder", "Bayut", "Dubizzle", "Own Website"],
+  datasets: [{
+    data: [
+      {{$Property_Finder_count}},
+      {{$Bayut_count}},
+      {{$Dubizzle_count}},
+      {{$Own_Website_count}}
+    ],
+    backgroundColor: [
+      '#262254',
+      '#413a91',
+      '#5c52cf',
+      '#7063fd'
+    ],
+    borderWidth: 0,
+    barThickness: 18,
+    maxBarThickness: 22
+  }]
+};
+
+new Chart(contactCatCharctx, {
+  type: 'horizontalBar',
+  data: contactCatCharData,
+  options: contactCatCharOptions
+});
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
